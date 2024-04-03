@@ -21,8 +21,14 @@ try:
         
         # Adjust the buzzer pitch based on light intensity
         # Convert light intensity (0-1) to frequency within the defined range
+        
         frequency = MIN_FREQUENCY + (MAX_FREQUENCY - MIN_FREQUENCY) * light_intensity
+
+        # Output Frequency for Debugging
         print(frequency)
+
+        #TODO: Fix logic for out of range Error. 
+        
         if frequency < 999:
             buzzer.play(Tone(frequency))
         else:
@@ -30,6 +36,7 @@ try:
         
         # Sleep for a short duration
         sleep(0.1)
+        
 except KeyboardInterrupt:
-    # Clean up GPIO resources
+    # Clean up the Buzzer
     buzzer.stop()
